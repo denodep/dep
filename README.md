@@ -19,7 +19,7 @@ Dep is a dependency management tool for Deno.
 
 ## CDN
 
-Dep provide a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
+Dep provide a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
 
 ```
 https://cdn.depjs.com/<package>[@<version>]/<file>
