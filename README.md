@@ -11,8 +11,8 @@ Deno dependency management tool.
   - [publish](#publish)
   - [start](#start)
   - [signup](#signup)
-  - [add](#login)
-  - [add](#logout)
+  - [login](#login)
+  - [logout](#logout)
 - [License](#license)
 
 ## Installation
@@ -54,16 +54,11 @@ Add a dependency.
 
 ```sh
 dep add <package...>
-```
 
-Add a deno standard (`std`) module.
-```sh
+# Add a deno standard (`std`) module.
 dep add std:<module-name>
-```
 
-Add a github registry as dependency.
-
-```sh
+# Add a github repository as dependency.
 dep add github:<owner>/<repo-name>
 ```
 
@@ -77,7 +72,7 @@ dep remove <package...>
 
 ### init
 
-Init a project.
+Interactively create a pkg.json file.
 
 ```sh
 dep init
