@@ -1,19 +1,33 @@
 # Dep
 
-Deno dependency management tool.
+Dep is a dependency management tool for Deno.
 
-- [Installation](#installation)
-- [Commands](#commands)
-  - [add](#add)
-  - [remove](#remove)
-  - [init](#init)
-  - [info](#info)
-  - [publish](#publish)
-  - [start](#start)
-  - [signup](#signup)
-  - [login](#login)
-  - [logout](#logout)
+- [CDN](#cdn)
+- [CLI](#cli)
+  - [Installation](#installation)
+  - [Commands](#commands)
+    - [add](#add)
+    - [remove](#remove)
+    - [init](#init)
+    - [info](#info)
+    - [publish](#publish)
+    - [start](#start)
+    - ...
+- [Issues](#issues)
+- [Contributing](#contributing)
 - [License](#license)
+
+## CDN
+
+Dep provide a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
+
+```
+https://cdn.depjs.com/<package>[@<version>]/<file>
+```
+
+*\* If you're building a complex program with deno, you might want to use dep `cli` to manage project dependencies.*
+
+## CLI
 
 ## Installation
 
@@ -55,7 +69,7 @@ Add a dependency.
 ```sh
 dep add <package...>
 
-# Add a deno standard (`std`) module.
+# Add a deno standard (std) module.
 dep add std:<module-name>
 
 # Add a github repository as dependency.
@@ -83,7 +97,7 @@ dep init
 Show information about a package.
 
 ```sh
-dep info <package>
+dep info <package>[@<version>]
 ```
 
 ### publish
@@ -102,29 +116,23 @@ Start a deno program with automatically generated flags.
 dep start
 ```
 
-### signup
+### ...
 
-Interactively sign up for a `depjs.com` account.
+For more references about dep cli, you can use the `dep help` command to read any of them once it's installed.
 
-```sh
-dep signup
-```
+## Issues
 
-### login
+If you find some issues about dep cli, or a module is not loading correctly, please report them:
 
-Interactively login to `depjs.com`.
+<https://github.com/denodep/dep/issues>
 
-```sh
-dep login
-```
+## Contributing
 
-### logout
+Contributions are always welcome, and they are greatly appreciated! Before you submit a pull request, check that it meets these guidelines:
 
-Clear login credentials.
-
-```sh
-dep logout
-```
+- Use `TypeScript` instead of `JavaScript`.
+- Use underscores in filenames.
+- Make pull requests as descriptive as possible.
 
 ## License
 
