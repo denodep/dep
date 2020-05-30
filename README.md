@@ -2,7 +2,18 @@
 
 Deno dependency management tool.
 
-[TOC]
+- [Installation](#installation)
+- [Commands](#commands)
+  - [add](#add)
+  - [remove](#remove)
+  - [init](#init)
+  - [info](#info)
+  - [publish](#publish)
+  - [start](#start)
+  - [signup](#signup)
+  - [add](#login)
+  - [add](#logout)
+- [License](#license)
 
 ## Installation
 
