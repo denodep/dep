@@ -46,6 +46,6 @@ export const action = async (command: Command, args: string[]) => {
 }
 
 export const command = new Command('remove')
-	.description('Remove a package dependency.')
+	.description('Remove a dependency.')
 	.usage('[packages ...] [flags]')
 	.action(wrap(action))

@@ -29,7 +29,7 @@ export const action = async (command: Command) => {
 			await syncConfirmation()
 		}
 		else {
-			throw new Error('Login required. Run `dep login` to login or `dep signup` to create a depjs.com account.')
+			throw new Error('Login required. Run `dep login` to login or `dep signup` to create a dep registry account.')
 		}
 	}
 
@@ -155,6 +155,6 @@ export const action = async (command: Command) => {
 }
 
 export const command = new Command('publish')
-	.description('Publish a package to depjs.com.')
+	.description('Publish a package to the dep registry.')
 	.option('--tag [tag]', 'version tag')
 	.action(wrap(action))

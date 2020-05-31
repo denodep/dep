@@ -19,7 +19,7 @@ Dep is a dependency management tool for Deno.
 
 ## CDN
 
-Dep provide a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
+Dep provides a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
 
 ```
 https://cdn.depjs.com/<package>[@<version>]/<file>
@@ -50,14 +50,14 @@ Options:
   -h, --help         display help for command
 
 Commands:
-  add                Add a package dependency.
-  remove             Remove a package dependency.
+  add                Add a dependency.
+  remove             Remove a dependency.
   init               Interactively create a pkg.json file.
   info               Show information about a package.
-  signup             Sign up for a depjs.com account.
-  login              Log in to depjs.com.
+  signup             Sign up for a dep registry account.
+  login              Log in to dep registry.
   logout             Clear login credentials.
-  publish            Publish a package to depjs.com.
+  publish            Publish a package to the dep registry.
   start              Start a deno program with automatically generated flags.
   help [command]     display help for command
 ```
@@ -70,10 +70,10 @@ Add a dependency.
 dep add <package...>
 
 # Add a deno standard (std) module.
-dep add std:<module-name>
+dep add std:<module>
 
 # Add a github repository as dependency.
-dep add github:<owner>/<repo-name>
+dep add github:<owner>/<repo>
 ```
 
 ### remove
@@ -102,7 +102,7 @@ dep info <package>[@<version>]
 
 ### publish
 
-Publish a package to `depjs.com`.
+Publish a package to the dep registry.
 
 ```sh
 dep publish

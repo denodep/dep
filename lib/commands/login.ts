@@ -56,5 +56,5 @@ export const action = async (command: Command) => {
 }
 
 export const command = new Command('login')
-	.description('Log in to depjs.com.')
+	.description('Log in to dep registry.')
 	.action(wrap(action))

@@ -73,7 +73,7 @@ export const action = async (command: Command, args: string[]) => {
 }
 
 export const command = new Command('add')
-	.description('Add a package dependency.')
+	.description('Add a dependency.')
 	.usage('[packages ...] [flags]')
 	.option('--no-cache', 'add dependencies without automatic caching')
 	.action(wrap(action))
