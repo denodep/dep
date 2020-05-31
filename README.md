@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/denodep/assets/master/img/logo_text.png" width="280">
+  <img src="https://raw.githubusercontent.com/denodep/assets/master/img/logo_text.png" width="288">
 </p>
 
 # Dep
