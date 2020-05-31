@@ -2,7 +2,7 @@ import { Md5 } from '../../deps.ts'
 import { RE_GITHUB_PACKAGE_NAME, RE_DEP_PACKAGE_TAG, HAS_ENTRY_STD_MODULES } from '../constants.ts'
 import { isLowercase, isStartOrEndWithHyphen, isLetterNumberHyphen } from '../utils/validator.ts'
 import { Package } from '../types.ts'
-import { getGithubRepoHTTPUrl, getGithubPackageUrlPrefix } from '../resolvers/github_resolver.ts'
+import { getGithubRepoHTTPUrl, getGithubPackageUrlPrefix, fetchLatestTagOfGithubRepo } from '../resolvers/github_resolver.ts'
 import { getDenoStdRepoHTTPUrl, getDenoXRepoHTTPUrl, fetchVersionOfDenoStd } from '../resolvers/std_resolver.ts'
 import { getDepPackageUrlPrefix } from '../resolvers/dep_resolver.ts'
 import { findPackage } from '../apis/pkg.ts'
@@ -50,7 +50,7 @@ export const parsePackageName = async (input: string) => {
 			pkg.name = repo
 			pkg.owner = owner
 			pkg.repo = repo
-			pkg.tag = tag
+			pkg.tag = tag || await fetchLatestTagOfGithubRepo(owner, repo)
 			pkg.repoUrl = getGithubRepoHTTPUrl(pkg)
 			pkg.urlPrefix = getGithubPackageUrlPrefix(pkg)
 		}

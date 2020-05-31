@@ -8,3 +8,11 @@ export const getRepoContents = async (owner: string, repo: string, path: string,
 
 	return res?.json()
 }
+
+export const getRepoTags = async (owner: string, repo: string) => {
+	const res = await requestGithub({
+		url: `/repos/${owner}/${repo}/tags`
+	})
+
+	return res?.json()
+}
