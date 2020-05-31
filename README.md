@@ -13,6 +13,7 @@ Use dep cli to quickly and easily add any module as a dependency from any arbitr
 - [CDN](#cdn)
 - [CLI](#cli)
   - [Installation](#installation)
+  - [Basic Usage](#basic-usage)
   - [Commands](#commands)
     - [add](#add)
     - [remove](#remove)
@@ -46,6 +47,40 @@ deno install -A --unstable https://deno.land/x/dep/bin/dep.ts
 ```
 
 *\* See [deno install](https://deno.land/manual/tools/script_installer) documentation if you're new to deno script installer.*
+
+## Basic Usage
+
+**Step 1: Add**
+
+Add dependencies by using `dep add` command.
+
+For example, the following command adds `http` module from deno standard library.
+
+```sh
+dep add std:http
+```
+
+**Step 2: Import**
+
+Import the module with a relative URL in your script.
+
+The following code import `server` from `http` module.
+
+```ts
+import { serve } from 'http/mod.ts'
+
+// your codes...
+```
+**Step 3: Run**
+
+Run your deno program with `--importmap` flag. Or just use `dep start` instead.
+
+```sh
+deno run --importmap=deps.json --unstable <file>
+
+# or
+dep start <file>
+```
 
 ## Commands
 
