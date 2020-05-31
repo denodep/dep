@@ -33,14 +33,11 @@ export const parsePackageName = async (input: string) => {
 			throw new Error(`Invalid package name '${name}'`)
 		}
 
-		pkg = {
-			// @ts-ignore
-			type,
-			id
-		}
+		// @ts-ignore
+		pkg = { id }
 
-		// type: github
-		if (type === 'github') {
+		// type: github | alias: gh
+		if (type === 'github' || type === 'gh') {
 			const match = RE_GITHUB_PACKAGE_NAME.exec(path)
 
 			if (!match) {
@@ -49,6 +46,7 @@ export const parsePackageName = async (input: string) => {
 
 			const [_, owner, repo] = match
 
+			pkg.type = 'github'
 			pkg.name = repo
 			pkg.owner = owner
 			pkg.repo = repo
@@ -70,6 +68,7 @@ export const parsePackageName = async (input: string) => {
 				pkg.main = 'mod.ts'
 			}
 
+			pkg.type = 'std'
 			pkg.name = repo
 			pkg.repo = repo
 			pkg.repoUrl = getDenoStdRepoHTTPUrl(pkg)
