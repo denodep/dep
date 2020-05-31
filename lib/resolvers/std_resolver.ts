@@ -10,8 +10,10 @@ export const getDenoStdRepoHTTPUrl = (pkg: Package) => {
 	return `${DENO_BASE_URL}/std${tag ? '@' + tag : ''}/${name}`
 }
 
-export const getDenoStdPackageUrlPrefix = (pkg: Package) => {
-	return getDenoStdRepoHTTPUrl(pkg) + '/'
+export const getDenoXRepoHTTPUrl = (pkg: Package) => {
+	const { name, tag } = pkg
+
+	return `${DENO_BASE_URL}/x/${name}${tag ? '@' + tag : ''}`
 }
 
 export const fetchVersionOfDenoStd = async (ref = 'master') => {

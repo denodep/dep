@@ -19,7 +19,7 @@ export type PermissionSetMap = {
 
 export interface Package {
 	id: string
-	type: 'dep' | 'github' | 'std'
+	type: 'dep' | 'github' | 'std' | 'x'
 	name: string
 	owner?: string
 	repo: string

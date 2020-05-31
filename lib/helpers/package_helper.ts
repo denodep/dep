@@ -3,7 +3,7 @@ import { RE_GITHUB_PACKAGE_NAME, RE_DEP_PACKAGE_TAG, HAS_ENTRY_STD_MODULES } fro
 import { isLowercase, isStartOrEndWithHyphen, isLetterNumberHyphen } from '../utils/validator.ts'
 import { Package } from '../types.ts'
 import { getGithubRepoHTTPUrl, getGithubPackageUrlPrefix } from '../resolvers/github_resolver.ts'
-import { getDenoStdRepoHTTPUrl, getDenoStdPackageUrlPrefix, fetchVersionOfDenoStd } from '../resolvers/std_resolver.ts'
+import { getDenoStdRepoHTTPUrl, getDenoXRepoHTTPUrl, fetchVersionOfDenoStd } from '../resolvers/std_resolver.ts'
 import { getDepPackageUrlPrefix } from '../resolvers/dep_resolver.ts'
 import { findPackage } from '../apis/pkg.ts'
 
@@ -72,7 +72,17 @@ export const parsePackageName = async (input: string) => {
 			pkg.name = repo
 			pkg.repo = repo
 			pkg.repoUrl = getDenoStdRepoHTTPUrl(pkg)
-			pkg.urlPrefix = getDenoStdPackageUrlPrefix(pkg)
+			pkg.urlPrefix = pkg.repoUrl + '/'
+		}
+		else if (type === 'x') {
+			const repo = path
+
+			pkg.type = 'x'
+			pkg.name = repo
+			pkg.repo = repo
+			pkg.tag = tag
+			pkg.repoUrl = getDenoXRepoHTTPUrl(pkg)
+			pkg.urlPrefix = pkg.repoUrl + '/'
 		}
 		else {
 			throw new Error(`Invalid package type '${type}'`)
