@@ -1,6 +1,14 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/denodep/assets/master/img/logo_text.png" width="280">
+</p>
+
 # Dep
 
-Dep is a dependency management tool for Deno.
+Dep is a dependency management tool for Deno. It requires deno 1.0 or greater.
+
+Dep uses [import maps](https://deno.land/manual/linking_to_external_code/import_maps) to manage your project dependencies, which might be the most concise way so far.
+
+Use dep cli to quickly and easily add any module as a dependency from any arbitrary source you want like dep registry, deno standard library `std`, deno third party module `x` or `github` repository.
 
 - [CDN](#cdn)
 - [CLI](#cli)
@@ -19,7 +27,7 @@ Dep is a dependency management tool for Deno.
 
 ## CDN
 
-Dep provides a fast, global content delivery network (CDN) for every published package. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
+Dep provides a fast, global content delivery network (CDN) for every published package on the dep registry. All the modules are served as separate files over HTTP/2 with edge caching. So you can easily import any file directly using a URL like:
 
 ```
 https://cdn.depjs.com/<package>[@<version>]/<file>
@@ -68,12 +76,20 @@ Add a dependency.
 
 ```sh
 dep add <package...>
+```
+
+```sh
+# Add a module published on then dep registry.
+dep add <module>[@<version>]
 
 # Add a deno standard (std) module.
-dep add std:<module>
+dep add std:<module>[@<version>]
 
-# Add a github repository as dependency.
-dep add github:<owner>/<repo>
+# Add a deno third party (x) module.
+dep add x:<module>[@<version>]
+
+# Add a github repository as dependency. (You can also use the prefix alias gh:)
+dep add github:<owner>/<repo>[@<tag>]
 ```
 
 ### remove
