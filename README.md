@@ -21,7 +21,7 @@ Use dep cli to quickly and easily add any module as a dependency from any arbitr
     - [info](#info)
     - [publish](#publish)
     - [start](#start)
-    - ...
+  - [Manifest](#manifest)
 - [Issues](#issues)
 - [Contributing](#contributing)
 - [License](#license)
@@ -164,16 +164,73 @@ dep publish
 Start a deno program with automatically generated flags.
 
 ```sh
+dep start [<file>]
+```
+
+After defining the entry point and permission in `pkg.json` file, you can use this common to execute your deno program.
+
+Here's an example:
+
+```js
+// pkg.json
+{
+  "main": "mod.ts",
+  "importmap": "deps.json",
+  "permissions": {
+    "read": true,
+    "run": true,
+    "net": ["google.com", "cdn.depjs.com"]
+  }
+}
+```
+
+```sh
 dep start
+# >> deno run --allow-read --allow-run --allow-net=google.com,cdn.depjs.com --importmap=deps.json --unstable mod.ts
 ```
 
 ### ...
 
 For more references about dep cli, you can use the `dep help` command to read any of them once it's installed.
 
+### Manifest
+
+If you're a module contributor, you might want to know more information about the manifest `pkg.json`, it's much like the `package.json` for npm as you already know, but a little different. It has a `importmap` property to specify the filename of import map (Defaults to `deps.json`) and a `permissions` property to specify the required permissions of your program.
+
+```ts
+type Manifest = {
+  name: string
+  version: string
+  description?: string
+  main?: string
+  importmap?: string
+  dependencies?: {
+    [key: string]: string
+  }
+  permissions?: {
+    [key: string]: true | Array<string>
+  }
+  keywords?: string[]
+  homepage?: string
+  author?: string | {
+    name: string
+    email?: string
+    url?: string
+  }
+  license?: string
+  repository?: {
+    type: string
+    url: string
+  }
+  bugs?: {
+    url: string
+  }
+}
+```
+
 ## Issues
 
-If you find some issues about dep cli, or a module is not loading correctly, please report them:
+If you find some issues about dep, or a module is not loading correctly, please report them:
 
 <https://github.com/denodep/dep/issues>
 
