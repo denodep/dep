@@ -6,8 +6,8 @@ export { Md5 } from 'https://deno.land/std@0.54.0/hash/md5.ts'
 export { Tar } from 'https://deno.land/std@0.54.0/archive/tar.ts'
 
 // third party
-import Ask from 'https://raw.githubusercontent.com/acathur/ask/1.0.2/mod.ts'
-import minimatch from 'https://deno.land/x/minimatch/index.js'
+import Ask from 'https://deno.land/x/ask@1.0.3/mod.ts'
+import minimatch from 'https://deno.land/x/minimatch@v3.0.4/index.js'
 import getUsername from 'https://deno.land/x/username@v1.0.0/mod.ts'
 export * as semver from 'https://deno.land/x/semver@v1.0.0/mod.ts'
 export { Command } from 'https://deno.land/x/cmd@v1.0.0/mod.ts'
