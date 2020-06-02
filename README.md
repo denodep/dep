@@ -4,7 +4,7 @@
 
 # Dep
 
-Dep is a dependency management tool for Deno. It requires deno 1.0 or greater.
+Dep is a dependency management tool for [Deno](https://github.com/denoland/deno). It requires deno 1.0 or greater.
 
 Dep uses [import maps](https://deno.land/manual/linking_to_external_code/import_maps) to manage your project dependencies, which might be the most concise way so far.
 
@@ -159,6 +159,8 @@ Publish a package to the dep registry.
 dep publish
 ```
 
+If you're using import maps in your project, dep cli will replace all the relative URLs to absolute URLs that mapping in your import map before packaging. With this feature, developers can always import / run / install any module or script by the remote URLs without import maps.
+
 ### start
 
 Start a deno program with automatically generated flags.
@@ -195,7 +197,7 @@ For more references about dep cli, you can use the `dep help` command to read an
 
 ### Manifest
 
-If you're a module contributor, you might want to know more information about the manifest `pkg.json`, it's much like the `package.json` for npm as you already know, but a little different. It has a `importmap` property to specify the filename of import map (Defaults to `deps.json`) and a `permissions` property to specify the required permissions of your program.
+If you're a module contributor, you might want to know more information about the manifest `pkg.json`, it's much like the `package.json` in npm as you already know, but a little different. It has a `importmap` property to specify the filename of import map (Defaults to `deps.json`) and a `permissions` property to specify the required permissions of your program.
 
 ```ts
 type Manifest = {
