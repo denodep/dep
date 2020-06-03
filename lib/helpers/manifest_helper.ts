@@ -7,7 +7,7 @@ import { MANIFEST_FILE_NAME } from '../constants.ts'
 const buildPermissionSetMap = (permissions?: PermissionMap) => {
 	const map: PermissionSetMap = {}
 
-	if (!permissions || !permissions.length) {
+	if (!permissions) {
 		return map
 	}
 
