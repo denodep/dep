@@ -10,6 +10,7 @@ import { command as logoutCmd} from './commands/logout.ts'
 import { command as packCmd} from './commands/pack.ts'
 import { command as publishCmd} from './commands/publish.ts'
 import { command as startCmd} from './commands/start.ts'
+import { command as whoamiCmd} from './commands/whoami.ts'
 
 // cannot import pkg.json directly, deno removed support for JSON imports #5037
 // https://github.com/denoland/deno/pull/5037
@@ -38,6 +39,7 @@ program
 	.addCommand(packCmd, { hidden: true })
 	.addCommand(publishCmd)
 	.addCommand(startCmd)
+	.addCommand(whoamiCmd)
 
 	// parse args
 	.parse(Deno.args)
