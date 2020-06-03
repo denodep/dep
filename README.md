@@ -6,9 +6,9 @@
 
 Dep is a dependency management tool for [Deno](https://github.com/denoland/deno). It requires deno 1.0 or greater.
 
-Dep uses [import maps](https://deno.land/manual/linking_to_external_code/import_maps) to manage your project dependencies, which might be the most concise way so far.
+Dep uses [import maps](https://deno.land/manual/linking_to_external_code/import_maps) to manage your project dependencies, which might be the most elegant way so far.
 
-Use dep cli to quickly and easily add any module as a dependency from any arbitrary source you want like dep registry, deno standard library `std`, deno third party module `x` or `github` repository.
+Use dep cli to quickly and easily add any module as a dependency from any arbitrary source you want like dep registry, deno standard library `std`, deno third party modules `x` or `github` repositories.
 
 - [CDN](#cdn)
 - [CLI](#cli)
@@ -40,13 +40,19 @@ https://cdn.depjs.com/<package>[@<version>]/<file>
 
 ## Installation
 
-Using deno install:
+**Deno script installer**:
 
 ```sh
 deno install -A --unstable https://deno.land/x/dep/bin/dep.ts
 ```
 
 *\* See [deno install](https://deno.land/manual/tools/script_installer) documentation if you're new to deno script installer.*
+
+**Homebrew (Mac)**:
+
+```sh
+brew tap denodep/dep && brew install deno-dep
+```
 
 ## Basic Usage
 
