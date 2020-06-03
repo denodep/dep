@@ -108,6 +108,7 @@ Commands:
   logout             Clear login credentials.
   publish            Publish a package to the dep registry.
   start              Start a deno program with automatically generated flags.
+  whoami             Print the dep username.
   help [command]     display help for command
 ```
 
