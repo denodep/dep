@@ -4,7 +4,7 @@ import Spinner from '../utils/spinner.ts'
 import { ManifestFile } from '../helpers/manifest_helper.ts'
 import { pack } from '../helpers/tarball_packer.ts'
 import { store } from '../store.ts'
-import { PACKAGE_SIZE_LIMIT } from '../constants.ts'
+import { PACKAGE_SIZE_LIMIT, CDN_BASE_URL } from '../constants.ts'
 import { getHashByPackageName } from '../helpers/package_helper.ts'
 import { publishPreCheck, publishPackage } from '../apis/pkg.ts'
 import { validatePackageName, validatePackageVersion, validatePackageTag } from '../utils/validator.ts'
@@ -59,7 +59,9 @@ export const action = async (command: Command) => {
 		throw new Error(`pkg.json doesn't have a version.`)
 	}
 
-	if (!manifest.data.main) {
+	const main = manifest.data.main
+
+	if (!main) {
 		const { confirm } = await ask.confirm({
 			name: 'confirm',
 			message: `You didn't specify the entry point (\`main\`) in pkg.json. Are you sure you want to publish this package without entry?`,
@@ -73,10 +75,10 @@ export const action = async (command: Command) => {
 	// check entry exists
 	else {
 		try {
-			await Deno.lstat(manifest.data.main)
+			await Deno.lstat(main)
 		}
 		catch (e) {
-			throw new Error(`Entry file (${manifest.data.main}) does not exists, please check "main" in your pkg.json.`)
+			throw new Error(`Entry file (${main}) does not exists, please check "main" in your pkg.json.`)
 		}
 	}
 
@@ -152,6 +154,7 @@ export const action = async (command: Command) => {
 	await Deno.remove(fileloc)
 
 	logger.success(`Published \x1b[34;1m${name}\x1b[0;35;3m@${version}.`)
+	logger.info(`Users can add this module by \`dep add ${name}\`, or just import from the remote URL '${CDN_BASE_URL}/${name}/${main || '<file>'}' now.`)
 }
 
 export const command = new Command('publish')
