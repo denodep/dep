@@ -4,6 +4,7 @@ import Spinner from '../utils/spinner.ts'
 import { isEmpty, validateUsername, validateEmail, validatePassword } from '../utils/validator.ts'
 import { signIn } from '../helpers/account_helper.ts'
 import { wrap } from '../lifecycles/hooks.ts'
+import { store } from '../store.ts'
 
 const execLoginAsk = async (ask: Ask): Promise<any> => {
 	const { username, password } = await ask.prompt([{
@@ -37,6 +38,19 @@ const execLoginAsk = async (ask: Ask): Promise<any> => {
 export const action = async (command: Command) => {
 	const spinner = new Spinner()
 	const ask = new Ask()
+
+	const { username, accessToken } = await store.toObject()
+
+	if (accessToken) {
+		const { confirm } = await ask.confirm({
+			name: 'confirm',
+			message: `You've been logged in as ${username}. Are you sure you want to continue?`
+		})
+
+		if (!confirm) {
+			return
+		}
+	}
 
 	const data = await execLoginAsk(ask)
 
