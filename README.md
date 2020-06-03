@@ -43,7 +43,7 @@ https://cdn.depjs.com/<package>[@<version>]/<file>
 **Deno script installer**:
 
 ```sh
-deno install -A --unstable https://deno.land/x/dep/bin/dep.ts
+deno install -A --unstable https://cdn.depjs.com/dep/bin/dep.ts
 ```
 
 *\* See [deno install](https://deno.land/manual/tools/script_installer) documentation if you're new to deno script installer.*
