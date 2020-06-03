@@ -1,9 +1,16 @@
 {
   "name": "dep",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Deno dependency management tool.",
+  "main": "bin/dep.ts",
   "permissions": {
-    "all": true
+    "env": true,
+    "net": true,
+    "read": true,
+    "run": true,
+    "write": true
   },
+  "repository": "https://github.com/denodep/dep",
+  "author": "Acathur",
   "license": "MIT"
 }
