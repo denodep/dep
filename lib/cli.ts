@@ -12,17 +12,12 @@ import { command as publishCmd} from './commands/publish.ts'
 import { command as startCmd} from './commands/start.ts'
 import { command as whoamiCmd} from './commands/whoami.ts'
 
-// cannot import pkg.json directly, deno removed support for JSON imports #5037
-// https://github.com/denoland/deno/pull/5037
-const pkgUrl = import.meta.url.replace(/^file:\/\//, '').replace(/lib\/cli\.ts$/, '') + 'pkg.json'
-const pkg = JSON.parse(new TextDecoder().decode(Deno.readFileSync(pkgUrl)))
-const program = new Command(pkg.name)
-
-await init(pkg)
+const { dep } = await init()
+const program = new Command(dep?.name)
 
 // set global options
 program
-	.version(pkg.version, '-v, --version')
+	.version(dep?.version, '-v, --version')
 	.usage('[command] [flags]')
 	.option('--cwd <cwd>', `working directory to use (default: ${Deno.cwd()})`)
 	.option('--verbose', 'output verbose messages on internal operations')
