@@ -28,8 +28,10 @@ const getSubCommand = () => {
 }
 
 export const init = async () => {
-	const name = 'dep'
-	const version = getDepVersion()
+	const dep = {
+		name: 'dep',
+		version: getDepVersion()
+	}
 	const subcmd = getSubCommand()
 	const cwd = Deno.cwd()
 	let { udid, fpi } = await store.toObject()
@@ -45,10 +47,7 @@ export const init = async () => {
 
 	state.cwd = cwd
 	state.subcmd = subcmd
-	state.dep = {
-		name,
-		version
-	}
+	state.dep = dep
 
-	return state
+	return dep
 }

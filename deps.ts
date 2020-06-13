@@ -10,10 +10,10 @@ import Ask from 'https://deno.land/x/ask@1.0.3/mod.ts'
 import minimatch from 'https://deno.land/x/minimatch@v3.0.4/index.js'
 import getUsername from 'https://deno.land/x/username@v1.0.0/mod.ts'
 export * as semver from 'https://deno.land/x/semver@v1.0.0/mod.ts'
-export { Command } from 'https://deno.land/x/cmd@v1.0.0/mod.ts'
-export { exec } from 'https://deno.land/x/execute@v1.0.0/mod.ts'
-export { getMac } from 'https://deno.land/x/mac@v1.0.0/mod.ts'
-export { Store } from 'https://deno.land/x/store@v1.0.0/mod.ts'
+export { Command } from 'https://cdn.depjs.com/cmd@1.0.2/mod.ts'
+export { exec } from 'https://cdn.depjs.com/exec@1.1.0/mod.ts'
+export { getMac } from 'https://cdn.depjs.com/mac@1.1.0/mod.ts'
+export { Store } from 'https://cdn.depjs.com/store@1.0.1/mod.ts'
 export {
 	Ask,
 	getUsername,

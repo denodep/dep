@@ -12,12 +12,12 @@ import { command as publishCmd} from './commands/publish.ts'
 import { command as startCmd} from './commands/start.ts'
 import { command as whoamiCmd} from './commands/whoami.ts'
 
-const { dep } = await init()
-const program = new Command(dep?.name)
+const dep = await init()
+const program = new Command(dep.name)
 
 // set global options
 program
-	.version(dep?.version, '-v, --version')
+	.version(dep.version, '-v, --version')
 	.usage('[command] [flags]')
 	.option('--cwd <cwd>', `working directory to use (default: ${Deno.cwd()})`)
 	.option('--verbose', 'output verbose messages on internal operations')
