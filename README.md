@@ -54,6 +54,12 @@ deno install -A --unstable https://cdn.depjs.com/dep/bin/dep.ts
 brew tap denodep/dep && brew install deno-dep
 ```
 
+Upgrade:
+
+```sh
+brew upgrade deno-dep
+```
+
 ## Basic Usage
 
 **Step 1: Add**
