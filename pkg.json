@@ -1,6 +1,6 @@
 {
   "name": "dep",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Deno dependency management tool.",
   "main": "bin/dep.ts",
   "permissions": {
