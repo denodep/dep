@@ -101,7 +101,7 @@ export const action = async (command: Command) => {
 		fileCount
 	} = await pack(manifest.data, {
 		cwd: command.cwd,
-		outputDir: Deno.dir('tmp')
+		outputDir: Deno.env.get('TMPDIR')
 	})
 
 	logger.verbose(`Wrote tarball to "${fileloc}".`)

@@ -1,8 +1,8 @@
 import { Store } from '../deps.ts'
 
 const getCachePath = () => {
-	const dirhome = Deno.dir('home')
-	const dircache = !dirhome && Deno.dir('cache')
+	const dirhome = Deno.env.get('HOME')
+	const dircache = !dirhome && Deno.env.get('XDG_CACHE_HOME') || Deno.env.get('LOCALAPPDATA')
 
 	if (dirhome) {
 		return dirhome
